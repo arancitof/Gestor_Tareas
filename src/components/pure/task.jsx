@@ -3,6 +3,9 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Task } from '../../models/task.class';
 
+//Importar la hoja de estilos
+import '../../styles/task.css'
+
 
 const TaskComponent = ( { task } ) => {
 
@@ -15,7 +18,7 @@ const TaskComponent = ( { task } ) => {
 
     return (
         <div>
-            <h2>
+            <h2 className='task-name'>
                 Nombre: { task.name }
             </h2>
             <h3>

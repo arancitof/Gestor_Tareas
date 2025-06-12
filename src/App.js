@@ -7,6 +7,7 @@ import Ejemplo1 from './hooks/Ejemplo1';
 import Ejemplo2 from './hooks/Ejemplo2';
 import MicomponenteConContexto from './hooks/Ejemplo3';
 import Ejemplo4 from './hooks/Ejemplo4';
+import GrettingStyled from './components/pure/grettingStyled';
 
 function App() {
   return (
@@ -16,16 +17,17 @@ function App() {
         {/* Componente Gretting */}
         {/*         <Gretting name='Alan'></Gretting> */}
         {/* <GrettingF name='Alan'></GrettingF> */}
-        {/* <TaskListComponent></TaskListComponent> */}
+{/*         <TaskListComponent></TaskListComponent> */}
         {/* <Ejemplo1></Ejemplo1> */}
         {/* <Ejemplo2></Ejemplo2> */}
         {/* <MicomponenteConContexto></MicomponenteConContexto> */}
-        <Ejemplo4 nombre='Alan'>
+       {/*  <Ejemplo4 nombre='Alan'> */}
           {/* Todo lo que hay aqui dentro es tratado como props.children */}
-          <h3>
+  {/*         <h3>
             Contenido del Children
           </h3>
-        </Ejemplo4>
+        </Ejemplo4> */}
+        <GrettingStyled name='Alan'></GrettingStyled>
       </header>
     </div>
   );
