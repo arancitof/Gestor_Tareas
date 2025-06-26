@@ -8,6 +8,7 @@ import Ejemplo2 from './hooks/Ejemplo2';
 import MicomponenteConContexto from './hooks/Ejemplo3';
 import Ejemplo4 from './hooks/Ejemplo4';
 import GrettingStyled from './components/pure/grettingStyled';
+import Father from './components/container/father';
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
 
       <GrettingStyled name='Alan'></GrettingStyled>
       <TaskListComponent></TaskListComponent>
+      
+      {/* Gestion de eventos */}
+      <Father> </Father>
     </div>
   );
 }
