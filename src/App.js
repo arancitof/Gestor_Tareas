@@ -28,12 +28,12 @@ function App() {
           </h3>
         </Ejemplo4> */}
       {/*       </header> */}
-
-      <GrettingStyled name='Alan'></GrettingStyled>
+{/* 
+      <GrettingStyled name='Alan'></GrettingStyled> */}
       <TaskListComponent></TaskListComponent>
       
       {/* Gestion de eventos */}
-      <Father> </Father>
+{/*       <Father> </Father> */}
     </div>
   );
 }

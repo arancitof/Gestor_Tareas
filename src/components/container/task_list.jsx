@@ -40,9 +40,18 @@ const TaskListComponent = () => {
         };
     }, [tasks]);
 
-    const chanceCompleted = (id) => {
-        console.log("TODO: Cambiar estado de una tarea");
-    };
+
+    function completedTask ( task ) {
+        console.log(' Complete this task;', task );
+        const index = tasks.indexOf( task );
+        const tempTasks = [ ...tasks ];
+        tempTasks[index].completed = !tempTasks[index].completed;
+        //Actualizar el estado del componente y actualizar la iteración de las tareas
+        //En orden a que se vean reflejadas las tareas completadas
+        setTasks(tempTasks);
+    }
+
+
 
     return (
         <div>
@@ -70,7 +79,12 @@ const TaskListComponent = () => {
                             <tbody>
                                 {tasks.map((task, index) => {
                                     return (
-                                        <TaskComponent key={index} task={task}></TaskComponent>
+                                        <TaskComponent 
+                                        key={index} 
+                                        task={task}
+                                        complete={ completedTask }
+                                        >
+                                        </TaskComponent>
                                     );
                                 })}
                             </tbody>
