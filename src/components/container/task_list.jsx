@@ -34,42 +34,88 @@ const TaskListComponent = () => {
 
     useEffect(() => {
         console.log("Task State has been modified");
-        setLoading(false);
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+
         return () => {
             console.log("taskList component is going to unmount");
         };
     }, [tasks]);
 
 
-    function completedTask ( task ) {
-        console.log(' Complete this task;', task );
-        const index = tasks.indexOf( task );
-        const tempTasks = [ ...tasks ];
+    function completedTask(task) {
+        console.log(' Complete this task;', task);
+        const index = tasks.indexOf(task);
+        const tempTasks = [...tasks];
         tempTasks[index].completed = !tempTasks[index].completed;
         //Actualizar el estado del componente y actualizar la iteración de las tareas
         //En orden a que se vean reflejadas las tareas completadas
         setTasks(tempTasks);
     }
 
-    function deleteTask ( task ) {
-        console.log(' Delete this task;', task );
-        const index = tasks.indexOf( task );
-        const tempTasks = [ ...tasks ];
-        tempTasks.splice( index, 1);
+    function deleteTask(task) {
+        console.log(' Delete this task;', task);
+        const index = tasks.indexOf(task);
+        const tempTasks = [...tasks];
+        tempTasks.splice(index, 1);
         setTasks(tempTasks);
 
     }
 
-    function addTask( task ) {
-        console.log(' Add this task;', task );
-        const index = tasks.indexOf( task );
-        const tempTasks = [ ...tasks ];
+    function addTask(task) {
+        console.log(' Add this task;', task);
+        const tempTasks = [...tasks];
         tempTasks.push(task);
         setTasks(tempTasks);
-
     }
 
+    const Table = () => {
+        return (
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col"> Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Priority</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {tasks.map((task, index) => {
+                        return (
+                            <TaskComponent
+                                key={index}
+                                task={task}
+                                complete={completedTask}
+                                remove={deleteTask}
+                            >
+                            </TaskComponent>
+                        );
+                    })}
+                </tbody>
+            </table>
+        )
+    }
 
+    let tasksTable;
+
+    if (tasks.length > 0) {
+        tasksTable = <Table></Table>
+    } else {
+        tasksTable = (
+            <div>
+                <h3>No hay tareas por mostrar</h3>
+                <h6>Por favor crea una nueva tarea</h6>
+            </div>
+        )
+    }
+
+    const loadingStyle = {
+        color: 'grey',
+        fontSize: '30px',
+        fontWeight: 'bold'
+    }
 
     return (
         <div>
@@ -85,33 +131,12 @@ const TaskListComponent = () => {
                         data-mdb-perfect-scrollbar="true"
                         style={{ position: "relative", height: "400px" }}
                     >
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th scope="col"> Title</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Priority</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {tasks.map((task, index) => {
-                                    return (
-                                        <TaskComponent 
-                                        key={index} 
-                                        task={task}
-                                        complete={ completedTask }
-                                        remove={ deleteTask }
-                                        >
-                                        </TaskComponent>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
+                        {/* TODO Loading Spinner */}
+                        {loading ? <p style={loadingStyle}>Cargando Tareas...</p> : tasksTable}
                     </div>
                 </div>
             </div>
-                    <TaskForm add={addTask}></TaskForm>
+            <TaskForm add={addTask} length={tasks.length}></TaskForm>
         </div>
     );
 };

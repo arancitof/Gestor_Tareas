@@ -33,7 +33,7 @@ function App() {
       <GrettingStyled name='Alan'></GrettingStyled> */}
       <TaskListComponent></TaskListComponent>
       {/* Ejemplos de renderizados condicionales */}
-      <OptionalRender></OptionalRender>
+      {/* <OptionalRender></OptionalRender> */}
 
       {/* Gestion de eventos */}
       {/*       <Father> </Father> */}
