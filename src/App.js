@@ -11,6 +11,7 @@ import GrettingStyled from './components/pure/grettingStyled';
 import Father from './components/container/father';
 import OptionalRender from './components/pure/optionalRender';
 import LoginFormik from './components/pure/forms/loginFormik';
+import RegisterFormik from './components/pure/forms/registerFormik';
 
 function App() {
   return (
@@ -33,12 +34,13 @@ function App() {
       {/* 
       <GrettingStyled name='Alan'></GrettingStyled> */}
       <TaskListComponent></TaskListComponent>
+      <RegisterFormik></RegisterFormik>
       {/* Ejemplos de renderizados condicionales */}
       {/* <OptionalRender></OptionalRender> */}
 
       {/* Gestion de eventos */}
       {/*       <Father> </Father> */}
-      <LoginFormik></LoginFormik>
+      {/*       <LoginFormik></LoginFormik> */}
     </div>
   );
 }
