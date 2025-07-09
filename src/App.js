@@ -10,6 +10,7 @@ import Ejemplo4 from './hooks/Ejemplo4';
 import GrettingStyled from './components/pure/grettingStyled';
 import Father from './components/container/father';
 import OptionalRender from './components/pure/optionalRender';
+import LoginFormik from './components/pure/forms/loginFormik';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
 
       {/* Gestion de eventos */}
       {/*       <Father> </Father> */}
+      <LoginFormik></LoginFormik>
     </div>
   );
 }
