@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
@@ -37,7 +38,8 @@ const LoginFormik = () => {
                     await new Promise((r) => setTimeout(r, 1000));
                     alert(JSON.stringify(values, null, 2));
                     /* Para guardar los datos en el local Storage */
-                    localStorage.setItem('credentials', values)
+                    await localStorage.setItem('credentials', values);
+                    <Navigate to='/profile' /> 
                 }}
             >
 
