@@ -12,6 +12,8 @@ import Father from './components/container/father';
 import OptionalRender from './components/pure/optionalRender';
 import LoginFormik from './components/pure/forms/loginFormik';
 import RegisterFormik from './components/pure/forms/registerFormik';
+import AsyncExample from './components/pure/AsyncExample';
+import ObservableExample from './components/pure/ObservableExample';
 
 function App() {
   return (
@@ -33,14 +35,19 @@ function App() {
       {/*       </header> */}
       {/* 
       <GrettingStyled name='Alan'></GrettingStyled> */}
-      <TaskListComponent></TaskListComponent>
-      <RegisterFormik></RegisterFormik>
+{/*       <TaskListComponent></TaskListComponent>
+      <RegisterFormik></RegisterFormik> */}
       {/* Ejemplos de renderizados condicionales */}
       {/* <OptionalRender></OptionalRender> */}
 
       {/* Gestion de eventos */}
       {/*       <Father> </Father> */}
       {/*       <LoginFormik></LoginFormik> */}
+
+
+      {/* Ejemplos de procesos asíncronos */}
+      {/* <AsyncExample></AsyncExample> */}
+      <ObservableExample></ObservableExample>
     </div>
   );
 }
