@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAllUsers } from '../../services/fetchService';
+import { getAllUsers, login } from '../../services/fetchService';
 
 const FetchExample = () => {
 
@@ -24,9 +24,24 @@ const FetchExample = () => {
         }
     }
 
+    const auth = () => {
+        login('eve.holt@reqres.in', 'cityslicka')
+            .then( ( response ) => {
+                console.log('TOKEN ', response.token);
+                sessionStorage.setItem('token', response.token)
+            })
+            .catch( ( error ) => {
+                alert(`Error de login: ${error}` )
+            })
+            .finally( () => {
+                console.log('End login User')
+            });
+    }
+
 
     return (
         <div>
+            <button onClick={auth}>LOGIN</button>
             <h2>
                 Users:
             </h2>
