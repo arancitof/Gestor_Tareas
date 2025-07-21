@@ -17,6 +17,7 @@ import ObservableExample from './components/pure/ObservableExample';
 import FetchExample from './components/pure/FetchExample';
 import AxiosExample from './components/pure/AxiosExample';
 import AxiosCRUDExample from './components/pure/AxiosCRUDExample';
+import Navbar from './components/pure/Navbar';
 
 function App() {
   return (
@@ -38,8 +39,10 @@ function App() {
       {/*       </header> */}
       {/* 
       <GrettingStyled name='Alan'></GrettingStyled> */}
-{/*       <TaskListComponent></TaskListComponent>
-      <RegisterFormik></RegisterFormik> */}
+      <Navbar></Navbar>
+      
+      <TaskListComponent></TaskListComponent>
+      {/* <RegisterFormik></RegisterFormik> */} 
       {/* Ejemplos de renderizados condicionales */}
       {/* <OptionalRender></OptionalRender> */}
 
@@ -53,7 +56,7 @@ function App() {
       {/* <ObservableExample></ObservableExample> */}
     {/*   <FetchExample></FetchExample> */}
     {/* <AxiosExample></AxiosExample> */}
-    <AxiosCRUDExample></AxiosCRUDExample>
+    {/* <AxiosCRUDExample></AxiosCRUDExample> */}
     </div>
   );
 }

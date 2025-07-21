@@ -72,29 +72,31 @@ const TaskListComponent = () => {
 
     const Table = () => {
         return (
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col"> Title</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Priority</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {tasks.map((task, index) => {
-                        return (
-                            <TaskComponent
-                                key={index}
-                                task={task}
-                                complete={completedTask}
-                                remove={deleteTask}
-                            >
-                            </TaskComponent>
-                        );
-                    })}
-                </tbody>
-            </table>
+            <div className="table-responsive">
+                <table className="table table-hover align-middle">
+                    <thead className="table-light">
+                        <tr>
+                            <th scope="col" style={{ width: '200px'}}> Title</th>
+                            <th style={{ minWidth: '300px'}}className="d-none d-lg-table-cell" scope="col">Description</th>
+                            <th scope="col" style={{ width: "120px" }}>Priority</th>
+                            <th scope="col" style={{ width: "150px" }}>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {tasks.map((task, index) => {
+                            return (
+                                <TaskComponent
+                                    key={index}
+                                    task={task}
+                                    complete={completedTask}
+                                    remove={deleteTask}
+                                >
+                                </TaskComponent>
+                            );
+                        })}
+                    </tbody>
+                </table>
+            </div>
         )
     }
 
@@ -105,8 +107,8 @@ const TaskListComponent = () => {
     } else {
         tasksTable = (
             <div>
-                <h3>No hay tareas por mostrar</h3>
-                <h6>Por favor crea una nueva tarea</h6>
+                <h3>There are no tasks to display</h3>
+                <h6>Please create a new task</h6>
             </div>
         )
     }
@@ -114,30 +116,66 @@ const TaskListComponent = () => {
     const loadingStyle = {
         color: 'grey',
         fontSize: '30px',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textAlign: 'center'
     }
 
     return (
-        <div>
-            <div className="col-12">
-                <div className="card">
-                    {/* Header */}
-                    <div className="card-header p-3">
-                        <h5>Your Task:</h5>
+        <div className="container-fluid p-0 m-0">
+            {/* Listado de tareas */}
+            <div className="row-justify-content-center">
+                <div className="col-12">
+                    <div className="card shadow-sm border-0">
+                        <div className="card-header bg-primary text-white">
+                            <h5 className="mb-0">Your Tasks:</h5>
+                        </div>
+                        {/* Body */}
+                        <div className="card-body"
+                        style={{ minHeight: '300px', overflowY:'auto'}}
+                        >
+                            {loading ? (
+                                <p style={loadingStyle}>Loading Tasks...</p>
+                            ) : (
+                                tasksTable
+                            )
+                        }
+                        </div>
                     </div>
-                    {/* Body */}
-                    <div
-                        className="card-body"
-                        data-mdb-perfect-scrollbar="true"
-                        style={{ position: "relative", height: "400px" }}
-                    >
-                        {/* TODO Loading Spinner */}
-                        {loading ? <p style={loadingStyle}>Cargando Tareas...</p> : tasksTable}
+                </div>
+
+                {/* Formulario */}
+                <div className="col-12 mt-3">
+                    <div className="card border-0 shadow-sm">
+                        <div className="card-body">
+                            <TaskForm add={addTask} length={tasks.length} />
+                        </div>
                     </div>
                 </div>
             </div>
-            <TaskForm add={addTask} length={tasks.length}></TaskForm>
         </div>
+        //<div>
+          //  <div className="container-fluid py-3">
+            //    {/* Listado de tareas */}
+              //  <div className="row justify-content-center">
+                //    <div className="card ">
+                  //      {/* Header */}
+                    //    <div className="card-header p-3">
+                      //      <h5>Your Task:</h5>
+                        //</div>
+                     //   {/* Body */}
+                        //<div
+                            //className="card-body"
+                           // data-mdb-perfect-scrollbar="true"
+                         //   style={{ position: "relative", height: "400px" }}
+                       // >
+                           // {/* TODO Loading Spinner */}
+                            //{loading ? <p style={loadingStyle}>Cargando Tareas...</p> : tasksTable}
+                        //</div>
+                    //</div>
+                //</div>
+            //</div>
+            //<TaskForm add={addTask} length={tasks.length}></TaskForm>
+        //</div>
     );
 };
 
